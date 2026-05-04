@@ -1,5 +1,5 @@
 import db from "../models/index.js";
-import CRUDService from "../service/CRUDService.js"
+import CRUDService from "../services/CRUDService.js"
 
 //Hàm getHomePage
 let getHomePage= async (req,res) => {
@@ -31,6 +31,7 @@ let getCRUD= (req,res)=>{
 
 //hàm findAll CRUD
 let getFindAllCrud = async (req, res) => {
+    let data = await CRUDService.getAllUser();
     console.log(data);
     console.log('..........................')
     return res.render('users/findAllUser.ejs', {
@@ -56,7 +57,7 @@ let getEditCRUD= async (req,res)=>{
     if(userId){
         let userData= await CRUDService.getUserInfoById(userId);
         console.log(userData);
-        return res.render("editCRUD.ejs",{
+        return res.render("updateUser.ejs",{
             user: userData
         });
     }
@@ -68,10 +69,11 @@ let getEditCRUD= async (req,res)=>{
 
 let putCRUD= async (req,res)=>{
     let data= req.body;
-    let userData= await CRUDService.updateUserData(data);
+    let userList = await CRUDService.updateUser(data); //update rồi hiển thị lại danh sách user
     return res.render("users/findAllUser.ejs",{
-        datalist: data1
+        datalist: userList
     });
+    return res.send('Update thành công!');
 }
 
 let deleteCRUD = async (req,res)=>{
@@ -82,7 +84,7 @@ let deleteCRUD = async (req,res)=>{
         return res.send('Deleted!')
     }
     else{
-        return res.sen('Not find user')
+        return res.send('Not find user')
     }
 }
 

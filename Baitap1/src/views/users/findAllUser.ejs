@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <title>User List</title>
+</head>
+<body>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Danh sách người dùng</h2>
+    <div class="table-responsive shadow-sm">
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Email</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Address</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(let i=0; i < datalist.length; i++) { %>
+                    <tr>
+                        <td><%= datalist[i].email %></td>
+                        <td><%= datalist[i].firstName %></td>
+                        <td><%= datalist[i].lastName %></td>
+                        <td><%= datalist[i].address %></td>
+                        <td class="text-center">
+                            <a href="/edit-crud?id=<%= datalist[i].id %>" class="btn btn-warning btn-sm mr-2">Edit</a>
+                            <a href="/delete-crud?id=<%= datalist[i].id %>" 
+                               class="btn btn-danger btn-sm" 
+                               onclick="return confirm('Bạn có chắc chắn muốn xóa?')">Delete</a>
+                        </td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+    <a href="/crud" class="btn btn-success mt-3">Thêm người dùng mới</a>
+</div>
+</body>
+</html>

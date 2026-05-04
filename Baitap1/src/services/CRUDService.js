@@ -1,5 +1,5 @@
 import bcrypt from 'bcryptjs'; //import thư viện bcrupt js
-import db from '../models/index'; //import database
+import db from '../models/index.js'; //import database
 
 import {where} from 'sequelize';
 
@@ -11,7 +11,7 @@ let createNewUser = async (data) => { //hàm tạo user mới với tham số da
             await db.User.create(
                 {
                     email: data.email,
-                    password: hashPasswordFromBryptjs,
+                    password: hashPasswordFromBcrypt,
                     firstName: data.firstName,
                     lastName: data.lastName,
                     address: data.address,
@@ -29,10 +29,10 @@ let createNewUser = async (data) => { //hàm tạo user mới với tham số da
 }
 
 let hashUserPassword = (password) => {
-    return new Promise(async (resole,reject) => {//dùng promise đảm bảo luôn trả kết quả, trong xử lý bất đồng bộ
+    return new Promise(async (resolve,reject) => {//dùng promise đảm bảo luôn trả kết quả, trong xử lý bất đồng bộ
         try{
-            let hashPassword = await bcrypt.hashSync("B4c0/\/", salt);
-            resole(hashPassword);
+            let hashPassword = await bcrypt.hashSync(password, salt);
+            resolve(hashPassword);
         }catch(e)
         {
             reject(e);

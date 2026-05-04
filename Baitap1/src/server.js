@@ -1,8 +1,8 @@
 import express from "express";
 import bodyParser from "body-parser";
-import viewEngine from "./config/viewEngine";
-import initWebRoutes from '.route/web'; // nạp file web từ Route
-import connectDB from './config/configdb';
+import viewEngine from "./config/viewEngine.js";
+import initWebRoutes from './route/web.js'; // nạp file web từ Route
+import connectDB from './config/configdb.js';
 
 require('dotenv').config(); // gọi hàm config của dotenv để chạy lệnh preocess.env.PORT
 
