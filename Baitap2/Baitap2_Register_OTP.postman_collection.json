@@ -1,0 +1,77 @@
+{
+  "info": {
+    "_postman_id": "00ec22b4-39fc-4b3b-a5f6-ea5ab45dd13f",
+    "name": "Baitap2_congnghemoi_Register",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "48851044",
+    "_collection_link": "https://go.postman.co/collection/48851044-00ec22b4-39fc-4b3b-a5f6-ea5ab45dd13f?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "http://localhost:8088/api/auth/register",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\": \"hoangcamton@gmail.com\", \r\n    \"password\": \"123456789\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8088/api/auth/register",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8088",
+          "path": [
+            "api",
+            "auth",
+            "register"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8088/api/auth/verify-otp",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\": \"hoangcamton@gmail.com\",\r\n    \"otp\": \"320860\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8088/api/auth/verify-otp",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8088",
+          "path": [
+            "api",
+            "auth",
+            "verify-otp"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
